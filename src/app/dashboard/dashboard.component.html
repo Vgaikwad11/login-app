@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="alert alert-success">
+    <h1>Hi, <i>{{userInfo.name}}</i></h1>
+    <h2>Your Role is: <i>{{userInfo.role}}</i></h2>
+    <h2>Your Email is: <i>{{userInfo.email}}</i></h2>
+    <h3>
+      Permission:<i>{{userInfo.role === "Admin" ?"You have access to view users":"You can only see your dashboard"}}</i>
+    </h3>
+    <button class="btn btn-danger" (click)="logoutUser()">Logout</button>
+  </div>
+</div>

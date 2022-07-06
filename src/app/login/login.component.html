@@ -1,0 +1,36 @@
+ <div class="container">
+   <div class="panel panel-primary">
+     <div class="panel-heading">
+       Login Form
+     </div>
+     <div class="panel-body">
+       <h2 style="color:red">{{loginError}}</h2>
+       <form #form="ngForm" (submit)="submitLogin(form)">
+         <div class="row">
+           <div class="col-md-6">
+             <div class="form-group" [class.has-error]="mail.invalid && mail.dirty">
+               <label for="fname" class="control-label">Email</label>
+               <input type="text" class="form-control" name="email"
+                 pattern="^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,5})$" [(ngModel)]="loginForm.email"
+                 #mail="ngModel" />
+               <div class="alert alert-danger error" *ngIf="mail.invalid && mail.dirty">
+                 Please enter valid email..!
+               </div>
+             </div>
+           </div>
+           <div class="col-md-6">
+             <div class="form-group" [class.has-error]="pass.invalid && pass.dirty">
+               <label for="fname" class="control-label">Password</label>
+               <input type="password" class="form-control" name="password" minlength="8"
+                 [(ngModel)]="loginForm.password" #pass="ngModel">
+               <div class="alert alert-danger error" *ngIf="pass.invalid && pass.dirty">
+                 Minimum required length of password is 8 characters..!
+               </div>
+             </div>
+           </div>
+         </div>
+         <button type="submit" class="btn btn-primary" [disabled]="!form.valid"> Login </button>
+       </form>
+     </div>
+   </div>
+ </div>

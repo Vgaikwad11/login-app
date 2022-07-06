@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="navbar-inverse panel-heading">
+      Register Form
+    </div>
+    <div class="panel-body">
+      <form #form="ngForm" (submit)="submitForm(form)">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group" [class.has-error]="firstname.invalid && firstname.touched">
+              <label for="name" class="control-label">Name</label>
+              <input type="text" class="form-control" name="name" required [(ngModel)]="myEmployee.name"
+                #firstname="ngModel" />
+              <div class="alert alert-danger error" *ngIf="firstname.invalid && firstname.touched">
+                Name is required field..!
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group" [class.has-error]="mail.invalid && mail.dirty">
+              <label for="fname" class="control-label">Email</label>
+              <input type="email" class="form-control" name="email"
+                pattern="^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,5})$" [(ngModel)]="myEmployee.email"
+                #mail="ngModel" />
+              <div class="alert alert-danger error" *ngIf="mail.invalid && mail.dirty">
+                Please enter valid email..!
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="col-md-6">
+            <div class="form-group" [class.has-error]="pass.invalid && pass.dirty">
+              <label for="fname" class="control-label">Password</label>
+              <input type="password" class="form-control" name="password" minlength="8"
+                [(ngModel)]="myEmployee.password" #pass="ngModel">
+              <div class="alert alert-danger error" *ngIf="pass.invalid && pass.dirty">
+                Minimum required length of password is 8 characters..!
+              </div>
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group" [class.has-error]="Phone.invalid && Phone.dirty">
+              <label for="phone" class="control-label">Phone</label>
+              <input type="text" class="form-control" name="phone" minlength="10" maxlength="10"
+                [(ngModel)]="myEmployee.phone" #Phone="ngModel">
+              <div class="alert alert-danger error" *ngIf="Phone.invalid && Phone.dirty">
+                Minimum required length of Phone is 10 numbers..!
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-primary" [disabled]="!form.valid"> Register </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
